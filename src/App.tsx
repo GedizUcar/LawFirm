@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import LawFirmDetail from './pages/LawFirmDetail';
+import LawyerDetail from './pages/LawyerDetail';
+import Appointment from './pages/Appointment';
+import Review from './pages/Review';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/law-firm/:id" element={<LawFirmDetail />} />
+        <Route path="/lawyer/:id" element={<LawyerDetail />} />
+        <Route path="/appointment/:id" element={<Appointment />} />
+        <Route path="/review" element={<Review />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
-}
+};
 
 export default App;
