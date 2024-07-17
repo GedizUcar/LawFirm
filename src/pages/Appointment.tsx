@@ -1,42 +1,42 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { lawFirms } from '../data/lawFirms';
+import lawFirms from '../data/lawFirms'; // düzeltildi
+
+interface Lawyer {
+  id: number;
+  name: string;
+  specialization: string;
+  education: string;
+  details: string;
+  available: string[]; // Uygunluk zamanlarını burada belirtiyoruz
+}
 
 const Appointment: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [selectedTime, setSelectedTime] = useState('');
-
   const lawyer = id 
-    ? lawFirms.flatMap(firm => firm.lawyers).find(lawyer => lawyer.id === parseInt(id))
+    ? lawFirms.flatMap(firm => firm.lawyers).find((lawyer: Lawyer) => lawyer.id === parseInt(id ?? '', 10))
     : null;
 
+  const [selectedTime, setSelectedTime] = useState('');
+
   if (!id || !lawyer) {
-    return <Typography variant="h4">Lawyer not found</Typography>;
+    return <div>Lawyer not found</div>;
   }
 
-  const handleSubmit = () => {
-    alert(`Appointment scheduled with ${lawyer.name} at ${selectedTime}`);
-  };
-
   return (
-    <Container>
-      <Box my={4}>
-        <Typography variant="h4" gutterBottom>
-          Schedule Appointment with {lawyer.name}
-        </Typography>
+    <div className="container">
+      <h2>Schedule Appointment with {lawyer.name}</h2>
+      <form>
         <TextField
-          select
           label="Select Time"
-          value={selectedTime}
-          onChange={(e) => setSelectedTime(e.target.value)}
+          select
           SelectProps={{
             native: true,
           }}
+          value={selectedTime}
+          onChange={(e) => setSelectedTime(e.target.value)}
           variant="outlined"
           fullWidth
           margin="normal"
@@ -51,13 +51,14 @@ const Appointment: React.FC = () => {
         <Button
           variant="contained"
           color="primary"
-          onClick={handleSubmit}
-          disabled={!selectedTime}
+          type="submit"
+          fullWidth
+          style={{ marginTop: '1rem' }}
         >
           Schedule Appointment
         </Button>
-      </Box>
-    </Container>
+      </form>
+    </div>
   );
 };
 

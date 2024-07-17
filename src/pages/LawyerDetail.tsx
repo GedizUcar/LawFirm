@@ -1,35 +1,51 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { lawFirms } from '../data/lawFirms';
+import { Card, CardContent, Typography, Button } from '@mui/material';
+import lawFirms from '../data/lawFirms';
+
+interface Lawyer {
+  id: number;
+  name: string;
+  specialization: string;
+  education: string;
+  details: string;
+}
+
+interface LawFirm {
+  id: number;
+  name: string;
+  location: string;
+  description: string;
+  lawyers: Lawyer[];
+}
 
 const LawyerDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const lawyer = lawFirms.flatMap(firm => firm.lawyers).find(lawyer => lawyer.id === parseInt(id ?? '', 10));
 
-  const lawyer = id 
-    ? lawFirms.flatMap(firm => firm.lawyers).find(lawyer => lawyer.id === parseInt(id))
-    : null;
-
-  if (!id || !lawyer) {
-    return <Typography variant="h4">Lawyer not found</Typography>;
+  if (!lawyer) {
+    return <div>Lawyer not found</div>;
   }
 
   return (
-    <Container>
-      <Box my={4}>
-        <Typography variant="h4" gutterBottom>
-          {lawyer.name}
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Specialty: {lawyer.specialty}
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Available Times: {lawyer.available.join(', ')}
-        </Typography>
-      </Box>
-    </Container>
+    <div className="container">
+      <Card className="lawyer-card">
+        <CardContent>
+          <Typography variant="h5" component="div">
+            {lawyer.name}
+          </Typography>
+          <Typography color="textSecondary">
+            {lawyer.education}
+          </Typography>
+          <Typography variant="body2">
+            Specialization: {lawyer.specialization}
+          </Typography>
+          <Typography variant="body1" component="p" style={{ marginTop: '1rem' }}>
+            {lawyer.details}
+          </Typography>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

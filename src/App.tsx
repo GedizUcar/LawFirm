@@ -13,6 +13,7 @@ import JoinUs from './pages/JoinUs';
 import FindBestMatch from './pages/FindBestMatch';
 import Login from './pages/Login';
 import LawFirms from './pages/LawFirms';
+import Lawyers from './pages/Lawyers';
 
 const App: React.FC = () => {
   return (
@@ -22,7 +23,8 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/law-firms" element={<LawFirms />} />
         <Route path="/law-firm/:id" element={<LawFirmDetail />} />
-        <Route path="/lawyers" element={<LawyerDetail />} />
+        <Route path="/lawyers" element={<Lawyers />} />
+        <Route path="/lawyer/:id" element={<LawyerDetail />} />
         <Route path="/appointment/:id" element={<Appointment />} />
         <Route path="/review" element={<Review />} />
         <Route path="/ai" element={<AI />} />

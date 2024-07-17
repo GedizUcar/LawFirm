@@ -1,58 +1,61 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
-import { lawFirms } from '../data/lawFirms';
+import { Card, CardContent, Typography, Button } from '@mui/material';
+import lawFirms from '../data/lawFirms';
+
+interface Lawyer {
+  id: number;
+  name: string;
+  specialization: string;
+  education: string;
+  details: string;
+}
+
+interface LawFirm {
+  id: number;
+  name: string;
+  location: string;
+  description: string;
+  lawyers: Lawyer[];
+}
 
 const LawFirmDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const firm: LawFirm | undefined = lawFirms.find(firm => firm.id === parseInt(id ?? '', 10));
 
-  const lawFirm = id 
-    ? lawFirms.find(firm => firm.id === parseInt(id))
-    : null;
-
-  if (!id || !lawFirm) {
-    return <Typography variant="h4">Law Firm not found</Typography>;
+  if (!firm) {
+    return <div>Law Firm not found</div>;
   }
 
   return (
-    <Container>
-      <Box my={4}>
-        <Typography variant="h4" gutterBottom>
-          {lawFirm.name}
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Location: {lawFirm.location}
-        </Typography>
-        <Typography variant="h6" gutterBottom>
-          Lawyers:
-        </Typography>
-        <List>
-          {lawFirm.lawyers.map(lawyer => (
-            <ListItem key={lawyer.id}>
-              <ListItemText
-                primary={`${lawyer.name} - ${lawyer.specialty}`}
-                secondary={`Available: ${lawyer.available.join(', ')}`}
-              />
-              <Button
-                variant="contained"
-                color="primary"
-                component={Link}
-                to={`/appointment/${lawyer.id}`}
-              >
-                Schedule Appointment
-              </Button>
-            </ListItem>
-          ))}
-        </List>
-      </Box>
-    </Container>
+    <div className="container">
+      <Card className="law-firm-card">
+        <CardContent>
+          <Typography variant="h5" component="h2">
+            {firm.name}
+          </Typography>
+          <Typography color="textSecondary">
+            {firm.location}
+          </Typography>
+          <Typography variant="body2" component="p">
+            {firm.description}
+          </Typography>
+          <Typography variant="h6" component="h3" style={{ marginTop: '1rem' }}>
+            Lawyers
+          </Typography>
+          <ul>
+            {firm.lawyers.map(lawyer => (
+              <li key={lawyer.id}>
+                {lawyer.name} - {lawyer.specialization}
+              </li>
+            ))}
+          </ul>
+          <Button variant="contained" color="primary" href={`/appointment/${firm.id}`}>
+            Make an Appointment
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
