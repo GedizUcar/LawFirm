@@ -1,14 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Card, CardContent, Typography, Button } from '@mui/material';
-import lawFirms from '../data/lawFirms';
+import { lawFirms } from '../data/lawFirms';
+import { Card, CardContent, Typography } from '@mui/material';
 
 interface Lawyer {
   id: number;
   name: string;
   specialization: string;
-  education: string;
-  details: string;
+  city: string;
 }
 
 interface LawFirm {
@@ -16,12 +15,18 @@ interface LawFirm {
   name: string;
   location: string;
   description: string;
+  practiceAreas: string[];
   lawyers: Lawyer[];
 }
 
 const LawyerDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const lawyer = lawFirms.flatMap(firm => firm.lawyers).find(lawyer => lawyer.id === parseInt(id ?? '', 10));
+  const lawyerId = parseInt(id ?? '', 10);
+
+  const firm: LawFirm | undefined = lawFirms.find(firm =>
+    firm.lawyers.some(lawyer => lawyer.id === lawyerId)
+  );
+  const lawyer: Lawyer | undefined = firm?.lawyers.find(lawyer => lawyer.id === lawyerId);
 
   if (!lawyer) {
     return <div>Lawyer not found</div>;
@@ -35,13 +40,13 @@ const LawyerDetail: React.FC = () => {
             {lawyer.name}
           </Typography>
           <Typography color="textSecondary">
-            {lawyer.education}
+            {lawyer.specialization} - {lawyer.city}
           </Typography>
           <Typography variant="body2">
-            Specialization: {lawyer.specialization}
+            Practice Areas: {firm?.practiceAreas.join(', ')}
           </Typography>
           <Typography variant="body1" component="p" style={{ marginTop: '1rem' }}>
-            {lawyer.details}
+            {firm?.description}
           </Typography>
         </CardContent>
       </Card>

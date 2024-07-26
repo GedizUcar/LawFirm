@@ -1,14 +1,13 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Card, CardContent, Typography, Button } from '@mui/material';
-import lawFirms from '../data/lawFirms';
+import { lawFirms } from '../data/lawFirms';
 
 interface Lawyer {
   id: number;
   name: string;
   specialization: string;
-  education: string;
-  details: string;
+  city: string;
 }
 
 interface LawFirm {
@@ -16,6 +15,7 @@ interface LawFirm {
   name: string;
   location: string;
   description: string;
+  practiceAreas: string[];
   lawyers: Lawyer[];
 }
 
@@ -31,28 +31,33 @@ const LawFirmDetail: React.FC = () => {
     <div className="container">
       <Card className="law-firm-card">
         <CardContent>
-          <Typography variant="h5" component="h2">
+          <Typography variant="h5" component="div">
             {firm.name}
           </Typography>
           <Typography color="textSecondary">
             {firm.location}
           </Typography>
-          <Typography variant="body2" component="p">
+          <Typography variant="body1" component="p" style={{ marginTop: '1rem' }}>
             {firm.description}
           </Typography>
-          <Typography variant="h6" component="h3" style={{ marginTop: '1rem' }}>
-            Lawyers
+          <Typography variant="body1" component="p" style={{ marginTop: '1rem' }}>
+            Practice Areas: {firm.practiceAreas.join(', ')}
           </Typography>
-          <ul>
+          <div>
+            <h3>Lawyers</h3>
             {firm.lawyers.map(lawyer => (
-              <li key={lawyer.id}>
-                {lawyer.name} - {lawyer.specialization}
-              </li>
+              <Card key={lawyer.id}>
+                <CardContent>
+                  <Typography variant="h6" component="div">
+                    {lawyer.name}
+                  </Typography>
+                  <Typography color="textSecondary">
+                    {lawyer.specialization} - {lawyer.city}
+                  </Typography>
+                </CardContent>
+              </Card>
             ))}
-          </ul>
-          <Button variant="contained" color="primary" href={`/appointment/${firm.id}`}>
-            Make an Appointment
-          </Button>
+          </div>
         </CardContent>
       </Card>
     </div>

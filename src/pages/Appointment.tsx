@@ -2,24 +2,23 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import lawFirms from '../data/lawFirms'; // düzeltildi
+import { lawFirms } from '../data/lawFirms';
 
 interface Lawyer {
   id: number;
   name: string;
   specialization: string;
-  education: string;
-  details: string;
-  available: string[]; // Uygunluk zamanlarını burada belirtiyoruz
+  city: string;
+  available: string[];
 }
 
 const Appointment: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const [selectedTime, setSelectedTime] = useState('');
+  
   const lawyer = id 
     ? lawFirms.flatMap(firm => firm.lawyers).find((lawyer: Lawyer) => lawyer.id === parseInt(id ?? '', 10))
     : null;
-
-  const [selectedTime, setSelectedTime] = useState('');
 
   if (!id || !lawyer) {
     return <div>Lawyer not found</div>;
@@ -28,18 +27,17 @@ const Appointment: React.FC = () => {
   return (
     <div className="container">
       <h2>Schedule Appointment with {lawyer.name}</h2>
-      <form>
+      <div>
         <TextField
           label="Select Time"
           select
+          value={selectedTime}
+          onChange={(e) => setSelectedTime(e.target.value)}
           SelectProps={{
             native: true,
           }}
-          value={selectedTime}
-          onChange={(e) => setSelectedTime(e.target.value)}
           variant="outlined"
           fullWidth
-          margin="normal"
         >
           <option value="">Select a time</option>
           {lawyer.available.map((time, index) => (
@@ -48,18 +46,12 @@ const Appointment: React.FC = () => {
             </option>
           ))}
         </TextField>
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          fullWidth
-          style={{ marginTop: '1rem' }}
-        >
-          Schedule Appointment
+        <Button variant="contained" color="primary" onClick={() => alert(`Scheduled with ${lawyer.name} at ${new Date(selectedTime).toLocaleString()}`)}>
+          Schedule
         </Button>
-      </form>
+      </div>
     </div>
   );
-};
+}
 
 export default Appointment;
