@@ -520,6 +520,13 @@ input, textarea {
   background-color: #1565c0;
 }
 
+/* General Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
 /* Law Firms and Lawyers Cards */
 .law-firms, .lawyer-cards {
   display: flex;
@@ -572,6 +579,43 @@ input, textarea {
   .law-firm-card, .lawyer-card {
     flex: 1 1 100%;
   }
+}
+
+/* LawFirmDetail Specific Styles */
+.law-firm-detail-card {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.law-firm-detail-card .lawyer-card {
+  margin: 1rem 0;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dialog-content h2 {
+  margin-bottom: 1rem;
+}
+
+.dialog-content .react-datepicker {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.dialog-actions button {
+  flex: 1;
+  margin: 0 0.5rem;
 }
 
 

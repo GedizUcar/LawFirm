@@ -3,7 +3,6 @@ import { Typography, Card, CardContent, Select, MenuItem, FormControl, InputLabe
 import { lawFirms } from '../data/lawFirms';
 import { useNavigate } from 'react-router-dom';
 
-
 const ITEMS_PER_PAGE = 15; // İlk sayfada daha fazla öğe gösterebiliriz
 
 const LawFirms: React.FC = () => {

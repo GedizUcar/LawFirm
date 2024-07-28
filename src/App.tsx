@@ -14,6 +14,7 @@ import FindBestMatch from './pages/FindBestMatch';
 import Login from './pages/Login';
 import LawFirms from './pages/LawFirms';
 import Lawyers from './pages/Lawyers';
+import Payment from './pages/Payment';
 
 const App: React.FC = () => {
   return (
@@ -22,7 +23,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/law-firms" element={<LawFirms />} />
-        <Route path="/law-firm/:id" element={<LawFirmDetail />} />
+        <Route path="/law-firm-detail/:id" element={<LawFirmDetail />} />
         <Route path="/lawyers" element={<Lawyers />} />
         <Route path="/lawyer/:id" element={<LawyerDetail />} />
         <Route path="/appointment/:id" element={<Appointment />} />
@@ -32,6 +33,7 @@ const App: React.FC = () => {
         <Route path="/join-us" element={<JoinUs />} />
         <Route path="/find-best-match" element={<FindBestMatch />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
       <Footer />
     </Router>

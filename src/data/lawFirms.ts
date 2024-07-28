@@ -3,6 +3,8 @@ export interface Lawyer {
   name: string;
   specialization: string;
   city: string;
+  education: string;
+  details: string;
   available: string[];
 }
 
@@ -28,6 +30,8 @@ export const lawFirms: LawFirm[] = [
         name: 'John Doe',
         specialization: 'Corporate Law',
         city: 'Istanbul',
+        education: 'Harvard Law School',
+        details: 'Expert in corporate mergers and acquisitions.',
         available: ['2024-07-20T10:00:00', '2024-07-21T14:00:00']
       },
       {
@@ -35,6 +39,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Jane Smith',
         specialization: 'Family Law',
         city: 'Istanbul',
+        education: 'Yale Law School',
+        details: 'Specializes in family disputes and custody cases.',
         available: ['2024-07-22T09:00:00', '2024-07-23T11:00:00']
       }
     ]
@@ -51,6 +57,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Alice Johnson',
         specialization: 'Criminal Law',
         city: 'Ankara',
+        education: 'Stanford Law School',
+        details: 'Renowned criminal defense attorney.',
         available: ['2024-07-24T13:00:00', '2024-07-25T15:00:00']
       },
       {
@@ -58,6 +66,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Bob Brown',
         specialization: 'Tax Law',
         city: 'Ankara',
+        education: 'Columbia Law School',
+        details: 'Experienced in labor disputes and employment law.',
         available: ['2024-07-26T10:00:00', '2024-07-27T16:00:00']
       }
     ]
@@ -74,6 +84,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Charlie Green',
         specialization: 'Labor Law',
         city: 'Izmir',
+        education: 'University of Chicago Law School',
+        details: 'Expert in labor law and workers\' rights.',
         available: ['2024-07-28T09:00:00', '2024-07-29T11:00:00']
       },
       {
@@ -81,6 +93,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Daisy Blue',
         specialization: 'Intellectual Property Law',
         city: 'Izmir',
+        education: 'NYU School of Law',
+        details: 'Specializes in corporate and individual tax planning.',
         available: ['2024-07-30T14:00:00', '2024-07-31T13:00:00']
       }
     ]
@@ -97,6 +111,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Eva Brown',
         specialization: 'Environmental Law',
         city: 'Antalya',
+        education: 'Berkeley Law',
+        details: 'Specializes in environmental regulations and compliance.',
         available: ['2024-08-01T10:00:00', '2024-08-02T11:00:00']
       },
       {
@@ -104,6 +120,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Frank White',
         specialization: 'Family Law',
         city: 'Antalya',
+        education: 'Georgetown Law',
+        details: 'Expert in family law and child custody cases.',
         available: ['2024-08-03T09:00:00', '2024-08-04T10:00:00']
       }
     ]
@@ -120,6 +138,8 @@ export const lawFirms: LawFirm[] = [
         name: 'George Black',
         specialization: 'Real Estate Law',
         city: 'Bursa',
+        education: 'Harvard Law School',
+        details: 'Expert in real estate transactions and property law.',
         available: ['2024-08-05T10:00:00', '2024-08-06T14:00:00']
       },
       {
@@ -127,6 +147,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Hannah Silver',
         specialization: 'Corporate Law',
         city: 'Bursa',
+        education: 'Stanford Law School',
+        details: 'Specializes in corporate governance and mergers.',
         available: ['2024-08-07T09:00:00', '2024-08-08T11:00:00']
       }
     ]
@@ -143,6 +165,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Ian Gray',
         specialization: 'Tax Law',
         city: 'Adana',
+        education: 'Yale Law School',
+        details: 'Expert in tax litigation and compliance.',
         available: ['2024-08-09T10:00:00', '2024-08-10T14:00:00']
       },
       {
@@ -150,6 +174,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Julia Pink',
         specialization: 'Family Law',
         city: 'Adana',
+        education: 'Columbia Law School',
+        details: 'Specializes in labor relations and employment law.',
         available: ['2024-08-11T09:00:00', '2024-08-12T11:00:00']
       }
     ]
@@ -166,6 +192,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Kevin White',
         specialization: 'Criminal Law',
         city: 'Gaziantep',
+        education: 'University of Chicago Law School',
+        details: 'Renowned defense attorney in criminal cases.',
         available: ['2024-08-13T10:00:00', '2024-08-14T14:00:00']
       },
       {
@@ -173,6 +201,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Laura Black',
         specialization: 'Tax Law',
         city: 'Gaziantep',
+        education: 'NYU School of Law',
+        details: 'Expert in family law and divorce cases.',
         available: ['2024-08-15T09:00:00', '2024-08-16T11:00:00']
       }
     ]
@@ -189,6 +219,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Michael Brown',
         specialization: 'Family Law',
         city: 'Konya',
+        education: 'Berkeley Law',
+        details: 'Specializes in child custody and family mediation.',
         available: ['2024-08-17T10:00:00', '2024-08-18T14:00:00']
       },
       {
@@ -196,6 +228,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Nancy Green',
         specialization: 'Corporate Law',
         city: 'Konya',
+        education: 'Georgetown Law',
+        details: 'Expert in corporate restructuring and mergers.',
         available: ['2024-08-19T09:00:00', '2024-08-20T11:00:00']
       }
     ]
@@ -212,6 +246,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Oscar Blue',
         specialization: 'Intellectual Property Law',
         city: 'Kayseri',
+        education: 'Harvard Law School',
+        details: 'Specializes in patent and trademark law.',
         available: ['2024-08-21T10:00:00', '2024-08-22T14:00:00']
       },
       {
@@ -219,6 +255,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Patricia Black',
         specialization: 'Real Estate Law',
         city: 'Kayseri',
+        education: 'Stanford Law School',
+        details: 'Expert in environmental regulations and compliance.',
         available: ['2024-08-23T09:00:00', '2024-08-24T11:00:00']
       }
     ]
@@ -235,6 +273,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Quincy Gray',
         specialization: 'Banking Law',
         city: 'Mersin',
+        education: 'Yale Law School',
+        details: 'Specializes in banking regulations and finance law.',
         available: ['2024-08-25T10:00:00', '2024-08-26T14:00:00']
       },
       {
@@ -242,6 +282,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Rachel Silver',
         specialization: 'Corporate Law',
         city: 'Mersin',
+        education: 'Columbia Law School',
+        details: 'Expert in corporate tax and finance law.',
         available: ['2024-08-27T09:00:00', '2024-08-28T11:00:00']
       }
     ]
@@ -258,6 +300,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Steve Black',
         specialization: 'Environmental Law',
         city: 'Samsun',
+        education: 'University of Chicago Law School',
+        details: 'Expert in environmental law and policy.',
         available: ['2024-08-29T10:00:00', '2024-08-30T14:00:00']
       },
       {
@@ -265,6 +309,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Tina White',
         specialization: 'Tax Law',
         city: 'Samsun',
+        education: 'NYU School of Law',
+        details: 'Specializes in real estate law and property disputes.',
         available: ['2024-08-31T09:00:00', '2024-09-01T11:00:00']
       }
     ]
@@ -281,6 +327,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Uma Green',
         specialization: 'Family Law',
         city: 'Trabzon',
+        education: 'Berkeley Law',
+        details: 'Expert in family law and domestic violence cases.',
         available: ['2024-09-02T10:00:00', '2024-09-03T14:00:00']
       },
       {
@@ -288,6 +336,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Victor Blue',
         specialization: 'Criminal Law',
         city: 'Trabzon',
+        education: 'Georgetown Law',
+        details: 'Renowned defense attorney for criminal cases.',
         available: ['2024-09-04T09:00:00', '2024-09-05T11:00:00']
       }
     ]
@@ -304,6 +354,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Wendy Brown',
         specialization: 'Corporate Law',
         city: 'Malatya',
+        education: 'Harvard Law School',
+        details: 'Specializes in corporate mergers and acquisitions.',
         available: ['2024-09-06T10:00:00', '2024-09-07T14:00:00']
       },
       {
@@ -311,6 +363,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Xander White',
         specialization: 'Environmental Law',
         city: 'Malatya',
+        education: 'Stanford Law School',
+        details: 'Expert in environmental regulations and compliance.',
         available: ['2024-09-08T09:00:00', '2024-09-09T11:00:00']
       }
     ]
@@ -327,6 +381,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Yvonne Gray',
         specialization: 'Labor Law',
         city: 'Eskisehir',
+        education: 'Yale Law School',
+        details: 'Expert in labor law and workers\' rights.',
         available: ['2024-09-10T10:00:00', '2024-09-11T14:00:00']
       },
       {
@@ -334,6 +390,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Zachary Black',
         specialization: 'Corporate Law',
         city: 'Eskisehir',
+        education: 'Columbia Law School',
+        details: 'Specializes in corporate governance and mergers.',
         available: ['2024-09-12T09:00:00', '2024-09-13T11:00:00']
       }
     ]
@@ -350,6 +408,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Aaron Green',
         specialization: 'Intellectual Property Law',
         city: 'Kocaeli',
+        education: 'University of Chicago Law School',
+        details: 'Specializes in patent and trademark law.',
         available: ['2024-09-14T10:00:00', '2024-09-15T14:00:00']
       },
       {
@@ -357,6 +417,8 @@ export const lawFirms: LawFirm[] = [
         name: 'Betty Blue',
         specialization: 'Real Estate Law',
         city: 'Kocaeli',
+        education: 'NYU School of Law',
+        details: 'Expert in real estate transactions and property law.',
         available: ['2024-09-16T09:00:00', '2024-09-17T11:00:00']
       }
     ]
